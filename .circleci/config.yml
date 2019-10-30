@@ -338,7 +338,7 @@ jobs:
       - deploy:
           name: Publish to Bintray
           command: |
-            if [[ $CIRCLE_BRANCH == master ]] || [[ $CIRCLE_BRANCH == release-* ]] || [[ $CIRCLE_TAG == android-v* ]]; then
+            if [[ $CIRCLE_BRANCH == master ]] || [[ $CIRCLE_BRANCH == release-* ]] || [[ $CIRCLE_BRANCH == mikhail_geojson_to_vt_in_background ]] || [[ $CIRCLE_TAG == android-v* ]]; then
               version=$(cat MapboxGLAndroidSDK/gradle.properties | grep "VERSION_NAME")
               if [[ $version != *"SNAPSHOT"* ]]; then
                 make run-android-upload-to-bintray
