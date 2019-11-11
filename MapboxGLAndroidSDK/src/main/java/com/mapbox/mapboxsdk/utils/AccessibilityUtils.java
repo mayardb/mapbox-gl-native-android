@@ -16,15 +16,15 @@ public class AccessibilityUtils {
 
   @SuppressWarnings("JavaReflectionMemberAccess")
   public static boolean isHighContrastEnabled(@NonNull Context context) {
-    AccessibilityManager accessibilityManager = (AccessibilityManager) context.getSystemService(Context.ACCESSIBILITY_SERVICE);
+    AccessibilityManager accessibility = (AccessibilityManager) context.getSystemService(Context.ACCESSIBILITY_SERVICE);
     try {
-      Method m = accessibilityManager.getClass().getMethod(METHOD_HIGH_TEXT_CONTRAST_ENABLED, null);
-      Object result = m.invoke(accessibilityManager, null);
+      Method m = accessibility.getClass().getMethod(METHOD_HIGH_TEXT_CONTRAST_ENABLED, null);
+      Object result = m.invoke(accessibility, null);
       if (result instanceof Boolean) {
         return (Boolean) result;
       }
-    } catch (Exception e) {
-      Logger.i(TAG, ERROR_HIGH_CONTRAST_LOOKUP , e);
+    } catch (Exception exception) {
+      Logger.i(TAG, ERROR_HIGH_CONTRAST_LOOKUP , exception);
     }
     return false;
   }
